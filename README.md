@@ -55,11 +55,3 @@ Para rodar o projeto em sua máquina local, siga estes passos:
     ```
 
 5. O projeto estará disponível em http://localhost:5173.
-
-## 📚 Mais informações do curso
-
-Gostou do projeto e quer conhecer mais?
-
-O design e protótipo deste projeto podem ser encontrados [aqui](https://www.figma.com/community/file/1425141851641585452). Este projeto é fictício e sem fins lucrativos. 
-
-Aproveite o desenvolvimento e aprimoramento do PoupApp!
