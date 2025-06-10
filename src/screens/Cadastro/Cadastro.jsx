@@ -15,9 +15,12 @@ import { RadioGroup, RadioInput } from "@components/BotaoRadio";
 import Form from "@components/Form/Form";
 import ilustracao from "@assets/images/ilustracao-cadastro.png";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUser } from "src/store/slices/userSlice.js";
 
 const Cadastro = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [nome, setNome] = useState("");
   const [renda, setRenda] = useState("");
@@ -25,6 +28,13 @@ const Cadastro = () => {
 
   const aoSubmeterFormulario = (evento) => {
     evento.preventDefault();
+    dispatch(
+      setUser({
+        name: nome,
+        income: renda,
+        financialObjective: objetivoFinanceiro,
+      })
+    );
     navigate("/home");
   };
 

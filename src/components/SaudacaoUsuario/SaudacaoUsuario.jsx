@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+
 import styled from "styled-components";
 
 export const Usuario = styled.div`
@@ -14,9 +16,11 @@ export const Usuario = styled.div`
 `;
 
 const SaudacaoUsuario = () => {
+  const userName = useSelector((state) => state.user.name);
+
   return (
     <Usuario>
-      <h1>Olá, </h1>
+      <h1>Olá, {userName}</h1>
       <p>Veja como estão suas finanças hoje.</p>
     </Usuario>
   );
