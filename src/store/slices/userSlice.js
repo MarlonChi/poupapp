@@ -4,6 +4,7 @@ const initialState = {
   name: "",
   income: "",
   financialObjective: "",
+  dailyBudget: 0,
 };
 
 const userSlice = createSlice({
@@ -16,9 +17,14 @@ const userSlice = createSlice({
       state.income = income;
       state.financialObjective = financialObjective;
     },
+    setDailyBudget: (state, action) => {
+      const income = action.payload;
+      state.income = parseFloat(income);
+      state.dailyBudget = Math.floor(income / 30);
+    },
   },
 });
 
-export const { setUser } = userSlice.actions;
+export const { setUser, setDailyBudget } = userSlice.actions;
 
 export default userSlice.reducer;

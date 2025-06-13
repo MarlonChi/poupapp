@@ -16,7 +16,7 @@ import Form from "@components/Form/Form";
 import ilustracao from "@assets/images/ilustracao-cadastro.png";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setUser } from "src/store/slices/userSlice.js";
+import { setDailyBudget, setUser } from "src/store/slices/userSlice.js";
 
 const Cadastro = () => {
   const navigate = useNavigate();
@@ -35,6 +35,7 @@ const Cadastro = () => {
         financialObjective: objetivoFinanceiro,
       })
     );
+    dispatch(setDailyBudget(renda));
     navigate("/home");
   };
 

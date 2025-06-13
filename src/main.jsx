@@ -5,7 +5,8 @@ import Home from "./screens/Home/Home.jsx";
 import Cadastro from "./screens/Cadastro/Cadastro.jsx";
 import GlobalStyle from "./GlobalStyle/index.jsx";
 import { Provider } from "react-redux";
-import store from "./store/store.js";
+import store, { persistor } from "./store/store.js";
+import { PersistGate } from "redux-persist/integration/react";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,9 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <GlobalStyle />
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <PersistGate persistor={persistor}>
+        <RouterProvider router={router} />
+      </PersistGate>
     </Provider>
   </StrictMode>
 );
