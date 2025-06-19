@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import CampoTexto from "@components/CampoTexto";
 import Fieldset from "@components/Fieldset";
 import Form from "@components/Form";
@@ -6,8 +7,11 @@ import { MoneyIcon } from "@components/Icones";
 import Label from "@components/Label";
 import Modal from "@components/Modal";
 import { SelectGroup, SelectOption } from "@components/Select";
+import { addTransaction } from "src/store/slices/transactionsSlice";
+import { updateBudget } from "src/store/slices/userSlice";
 
 const TransacaoModal = ({ isOpen, onCloseModal }) => {
+  const dispatch = useDispatch();
   const [novaTransacao, setNovaTransacao] = useState({
     nome: "",
     valor: 0,
@@ -17,6 +21,10 @@ const TransacaoModal = ({ isOpen, onCloseModal }) => {
   });
 
   const aoSubmeterFormModal = () => {
+    dispatch(addTransaction(novaTransacao));
+    dispatch(
+      updateBudget({ valor: novaTransacao.valor, tipo: novaTransacao.tipo })
+    );
     onCloseModal();
   };
 

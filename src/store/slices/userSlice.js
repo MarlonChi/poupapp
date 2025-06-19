@@ -22,9 +22,18 @@ const userSlice = createSlice({
       state.income = parseFloat(income);
       state.dailyBudget = Math.floor(income / 30);
     },
+    updateBudget: (state, action) => {
+      let value = Math.abs(action.payload.valor);
+
+      if (action.payload.tipo !== "receita") {
+        value = -value;
+      }
+
+      state.dailyBudget += parseFloat(value);
+    },
   },
 });
 
-export const { setUser, setDailyBudget } = userSlice.actions;
+export const { setUser, setDailyBudget, updateBudget } = userSlice.actions;
 
 export default userSlice.reducer;

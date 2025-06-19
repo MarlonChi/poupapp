@@ -5,8 +5,10 @@ import Transacao from "./Transacao/Transacao";
 import { Cartao, CartaoCabecalho } from "@components/Cartao";
 import Botao from "@components/Botao";
 import TransacaoModal from "./TransacaoModal";
+import { useSelector } from "react-redux";
 
-const Transacoes = ({ transacoes }) => {
+const Transacoes = () => {
+  const transacoes = useSelector((state) => state.transactions.transactions);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => {
