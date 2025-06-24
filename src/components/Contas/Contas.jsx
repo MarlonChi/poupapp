@@ -10,6 +10,8 @@ import Label from "@components/Label";
 import Fieldset from "@components/Fieldset";
 import { WalletIcon } from "@components/Icones";
 import CartaoCorpo from "@components/Cartao/CartaoCorpo/CartaoCorpo";
+import { useDispatch, useSelector } from "react-redux";
+import { addAccount } from "src/store/slices/accountsSlice";
 
 export const Container = styled(CartaoCorpo)`
   padding: var(--padding-l) var(--padding-m);
@@ -36,12 +38,15 @@ export const ListaMovimentacoes = styled.ul`
   -ms-overflow-style: none;
 `;
 
-const Contas = ({contas}) => {
+const Contas = () => {
+  const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [novaConta, setNovaConta] = useState({
     banco: "",
     saldo: 0,
   });
+
+  const contas = useSelector((state) => state.accounts.accounts);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -52,6 +57,7 @@ const Contas = ({contas}) => {
   };
 
   const aoAdicionarConta = () => {
+    dispatch(addAccount(novaConta));
     handleCloseModal();
   };
 

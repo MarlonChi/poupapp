@@ -33,6 +33,12 @@ export const SaldoConta = styled.div`
 `;
 
 const Conta = ({ conta }) => {
+  const formatCurrency = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+    minimunFractionDigits: 2,
+  });
+
   return (
     <ItemConta>
       <TituloConta>
@@ -41,7 +47,7 @@ const Conta = ({ conta }) => {
       </TituloConta>
       <SaldoConta>
         <p>Saldo</p>
-        <span>{conta.saldo}</span>
+        <span>{formatCurrency.format(conta.saldo)}</span>
       </SaldoConta>
     </ItemConta>
   );
