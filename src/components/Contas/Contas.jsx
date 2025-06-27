@@ -12,6 +12,7 @@ import { WalletIcon } from "@components/Icones";
 import CartaoCorpo from "@components/Cartao/CartaoCorpo/CartaoCorpo";
 import { useDispatch, useSelector } from "react-redux";
 import { addAccount } from "src/store/slices/accountsSlice";
+import { updateBalanceBudget } from "src/store/slices/userSlice";
 
 export const Container = styled(CartaoCorpo)`
   padding: var(--padding-l) var(--padding-m);
@@ -58,6 +59,7 @@ const Contas = () => {
 
   const aoAdicionarConta = () => {
     dispatch(addAccount(novaConta));
+    dispatch(updateBalanceBudget(novaConta.saldo));
     handleCloseModal();
   };
 
